@@ -1,1 +1,1 @@
-show_info(patient1)
+height
