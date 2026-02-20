@@ -1,1 +1,112 @@
-{"P001": {"name": "Nusrat Jahan", "city": "Dhaka", "age": 28, "gender": "female", "height": 1.65, "weight": 90, "bmi": 33.06, "verdict": "Obese"}, "P002": {"name": "Mahmud Hasan", "city": "Chattogram", "age": 35, "gender": "male", "height": 1.75, "weight": 85, "bmi": 27.76, "verdict": "Overweight"}, "P003": {"name": "Sadia Rahman", "city": "Rajshahi", "age": 22, "gender": "female", "height": 1.6, "weight": 45, "bmi": 17.58, "verdict": "Underweight"}, "P004": {"name": "Tanvir Ahmed", "city": "Sylhet", "age": 40, "gender": "male", "height": 1.8, "weight": 90, "bmi": 27.78, "verdict": "Overweight"}, "P005": {"name": "Farzana Akter", "city": "Khulna", "age": 30, "gender": "female", "height": 1.55, "weight": 75, "bmi": 31.22, "verdict": "Obese"}, "P006": {"name": "Rakib Hossain", "city": "Barishal", "age": 27, "gender": "male", "height": 1.7, "weight": 68, "bmi": 23.53, "verdict": "Normal"}, "P007": {"name": "Jannatul Ferdous", "city": "Rangpur", "age": 33, "gender": "female", "height": 1.58, "weight": 52, "bmi": 20.83, "verdict": "Normal"}, "P008": {"name": "Shahidul Islam", "city": "Mymensingh", "age": 45, "gender": "male", "height": 1.72, "weight": 95, "bmi": 32.11, "verdict": "Obese"}, "P009": {"name": "Tasnim Chowdhury", "city": "Comilla", "age": 24, "gender": "female", "height": 1.62, "weight": 60, "bmi": 22.86, "verdict": "Normal"}, "P010": {"name": "Imran Kabir", "city": "Narayanganj", "age": 38, "gender": "male", "height": 1.78, "weight": 82, "bmi": 25.88, "verdict": "Overweight"}, "P011": {"name": "Rakib", "city": "Dhaka", "age": 1, "gender": "male", "height": 100.0, "weight": 1.7, "bmi": 0.0, "verdict": "Underweight"}, "P012": {"name": "Rakib", "city": "Dhaka", "age": 25, "gender": "male", "height": 1.7, "weight": 80.0, "bmi": 27.68, "verdict": "Overweight"}}
+{
+    "P001": {
+        "name": "Nusrat Jahan",
+        "city": "Dhaka",
+        "age": 28,
+        "gender": "female",
+        "height": 1.65,
+        "weight": 90,
+        "bmi": 33.06,
+        "verdict": "Obese"
+    },
+    "P002": {
+        "name": "Mahmud Hasan",
+        "city": "Chattogram",
+        "age": 35,
+        "gender": "male",
+        "height": 1.75,
+        "weight": 85,
+        "bmi": 27.76,
+        "verdict": "Overweight"
+    },
+    "P003": {
+        "name": "Sadia Rahman",
+        "city": "Rajshahi",
+        "age": 22,
+        "gender": "female",
+        "height": 1.6,
+        "weight": 45,
+        "bmi": 17.58,
+        "verdict": "Underweight"
+    },
+    "P004": {
+        "name": "Tanvir Ahmed",
+        "city": "Sylhet",
+        "age": 40,
+        "gender": "male",
+        "height": 1.8,
+        "weight": 90,
+        "bmi": 27.78,
+        "verdict": "Overweight"
+    },
+    "P005": {
+        "name": "Farzana Akter",
+        "city": "Khulna",
+        "age": 30,
+        "gender": "female",
+        "height": 1.55,
+        "weight": 75,
+        "bmi": 31.22,
+        "verdict": "Obese"
+    },
+    "P006": {
+        "name": "Rakib Hossain",
+        "city": "Barishal",
+        "age": 27,
+        "gender": "male",
+        "height": 1.7,
+        "weight": 68,
+        "bmi": 23.53,
+        "verdict": "Normal"
+    },
+    "P007": {
+        "name": "Jannatul Ferdous",
+        "city": "Rangpur",
+        "age": 33,
+        "gender": "female",
+        "height": 1.58,
+        "weight": 52,
+        "bmi": 20.83,
+        "verdict": "Normal"
+    },
+    "P008": {
+        "name": "Shahidul Islam",
+        "city": "Mymensingh",
+        "age": 45,
+        "gender": "male",
+        "height": 1.72,
+        "weight": 95,
+        "bmi": 32.11,
+        "verdict": "Obese"
+    },
+    "P009": {
+        "name": "Tasnim Chowdhury",
+        "city": "Comilla",
+        "age": 24,
+        "gender": "female",
+        "height": 1.62,
+        "weight": 60,
+        "bmi": 22.86,
+        "verdict": "Normal"
+    },
+    "P010": {
+        "name": "Imran Kabir",
+        "city": "Narayanganj",
+        "age": 38,
+        "gender": "male",
+        "height": 1.78,
+        "weight": 82,
+        "bmi": 25.88,
+        "verdict": "Overweight"
+    },
+    "P012": {
+        "name": "Rakib",
+        "city": "Dhaka",
+        "age": 25,
+        "gender": "male",
+        "height": 1.7,
+        "weight": 80.0,
+        "bmi": 27.68,
+        "verdict": "Overweight"
+    }
+}

@@ -9,12 +9,12 @@ app = FastAPI()
 # pydantic class for patient data validation
 class Patient(BaseModel):
     id: Annotated[str, Field(..., description='Patient id', examples=['P001'])]
-    name: Annotated[str, Field(title="Name of the patient", description="Enter the patient Name here", examples=['Rakib', 'Rabbi'], max_length=25, min_length=2)]
-    city: Annotated[str, Field(title='Name of the city', description='Enter the city name', examples=['Dhaka', 'Narsingdi'], max_length=20, min_length=3)]
+    name: Annotated[str, Field(..., title="Name of the patient", description="Enter the patient Name here", examples=['Rakib', 'Rabbi'], max_length=25, min_length=2)]
+    city: Annotated[str, Field(..., title='Name of the city', description='Enter the city name', examples=['Dhaka', 'Narsingdi'], max_length=20, min_length=3)]
     age: Annotated[int, Field(..., gt=0, lt=130)]
     gender: Annotated[Literal['male', 'female', 'others'], Field(..., description='Your gender here')]
-    height: Annotated[float, Field(default=0.0, gt=0, strict=True)]
-    weight: Annotated[float, Field(default=0.0, gt=0, lt=300, strict=True)]
+    height: Annotated[float, Field(..., gt=0, strict=True)]
+    weight: Annotated[float, Field(..., gt=0, lt=300, strict=True)]
 
     #computed field to calculate the bmi and verdict
     @computed_field
@@ -35,12 +35,7 @@ class Patient(BaseModel):
         else : return 'Obsese'
 
 
-patient_info = {'id': 'P011', 'name': 'Rakib', 'city': 'Narsingdi', 'age': 25, 'gender': 'male', 'height': 1.64, 'weight': 67}
-
-def get_info(patient: Patient):
-    print(patient)
-    print(patient.bmi)
-    print(patient.verdict)
+# patient_info = {'id': 'P011', 'name': 'Rakib', 'city': 'Narsingdi', 'age': 25, 'gender': 'male', 'height': 1.64, 'weight': 67}
 
 # patient1 = Patient(**patient_info)
 # get_info(patient1)
@@ -48,9 +43,13 @@ def get_info(patient: Patient):
 # new_patient = patient1.model_dump()
 # print(new_patient)
 
-@app.get('/test')
-def test():
-    return new_patient
+class PatientUpdate(BaseModel):
+    name: Annotated[Optional[str], Field(default=None)]
+    city: Annotated[Optional[str], Field(default=None)]
+    age: Annotated[Optional[int], Field(default=None, gt=0)]
+    gender: Annotated[Optional[Literal['male', 'female', 'others']], Field(default=None)]
+    height: Annotated[Optional[float], Field(default=None, gt=0)]
+    weight: Annotated[Optional[float], Field(default=None, gt=0)]
 
 
 def load_data():
@@ -110,7 +109,7 @@ def sort_patient(sort_by: str = Query(..., description='Sort on the basis of hei
     sorted_data = sorted(data.values(), key=lambda x:x.get(sort_by, 0), reverse=sorted_order)
     return sorted_data
 
-
+#create new patient
 @app.post('/create')
 def create_patient(patient: Patient):
 
@@ -128,3 +127,47 @@ def create_patient(patient: Patient):
     save_data(data)
 
     return  JSONResponse(status_code=201, content={'message': 'Patient created successfully'})
+
+#update patient
+@app.put('/edit/{patient_id}')
+def update_patient(patient_id: str, patient_update: Patient):
+    data = load_data()
+
+    #check if the patient exist
+    if patient_id not in data:
+        raise HTTPException(status_code=404, detail={'message': 'Patient Not exist'})
+    
+    #extract data from json
+    existing_patient_info = data[patient_id]
+    #keep only inserted field or data
+    updated_patient_info = patient_update.model_dump(exclude_unset=True)
+
+    #update inserted data
+    for info in updated_patient_info:
+        existing_patient_info[info] = updated_patient_info[info]
+
+    #need to update the bmi and status
+    existing_patient_info['id'] = patient_id
+    patient_pydantic_obj = Patient(**existing_patient_info)
+
+    existing_patient_info = patient_pydantic_obj.model_dump(exclude='id')
+
+    #update in json
+    data[patient_id] = existing_patient_info
+
+    save_data(data)
+    return JSONResponse(status_code=200, content={'message': 'Updated Successfully'})
+
+@app.delete('/delete/{patient_id}')
+def delete_patient(patient_id: str):
+
+    data = load_data()
+
+    if patient_id not in data:
+        raise HTTPException(status_code=404, detail='Patient Not found')
+    
+    data.pop(patient_id)
+    save_data(data)
+    return JSONResponse(status_code=200, content={'message': 'Patient Deleted'})
+
+    
